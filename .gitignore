@@ -337,3 +337,6 @@ ASALocalRun/
 
 # Visual Studio Code folder
 .vscode/
+/BlazingPizza.Server/pizza.db-shm
+/BlazingPizza.Server/pizza.db
+/BlazingPizza.Server/pizza.db-wal
