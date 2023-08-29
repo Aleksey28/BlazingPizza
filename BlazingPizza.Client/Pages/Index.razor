@@ -1,0 +1,20 @@
+﻿@page "/"
+@inject HttpClient HttpClient
+
+<div class="main">
+    <ul class="pizza-cards">
+        @if (specials != null)
+        {
+            
+        }
+    </ul>
+</div>
+
+@code {
+    List<PizzaSpecial> specials;
+
+    protected override async Task OnInitializedAsync ()
+    {
+        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>("specials", BlazingPizza.OrderContext.Default.ListPizzaSpecial);
+    }
+}
