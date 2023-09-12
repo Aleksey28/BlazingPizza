@@ -33,6 +33,11 @@ public class Pizza
         return GetBasePrice() + Toppings.Sum(t => t.Topping.Price);
     }
 
+    public string GetFormattedBasePrice()
+    {
+        return GetBasePrice().ToString("0.00");
+    }
+
     public string GetFormattedTotalPrice()
     {
         return GetTotalPrice().ToString("0.00");
