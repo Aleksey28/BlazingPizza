@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <button type="submit" class="checkout-button btn btn-warning">
+        <button type="submit" class="checkout-button btn btn-warning" disabled="@isSubmitting">
             Place order
         </button>
 
@@ -28,11 +28,15 @@
 </div>
 
 @code {
+    bool isSubmitting = false; 
+
     async Task PlaceOrder()
     {
+        isSubmitting = true;
         var response = await HttpClient.PostAsJsonAsync("orders", OrderState.Order);
         var newOrderId = await response.Content.ReadFromJsonAsync<int>();
         OrderState.ResetOrder();
         NavigationManager.NavigateTo($"myorders/{newOrderId}");
+        isSubmitting = false;
     }
 }
