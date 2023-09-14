@@ -1,8 +1,9 @@
 ﻿@page "/myorders/{orderId:int}"
-
 @using System.Threading
 @inject HttpClient HttpClient
 @implements IDisposable
+
+<PageTitle>Blazing Pizza - Order Details</PageTitle>
 
 <div class="main">
     @if (invalidOrder)
@@ -19,7 +20,7 @@
         <div class="track-order">
             <div class="track-order-title">
                 <h2>
-                    Order placed @orderWithStatus.Order.CreatedTime.ToLongDateString();
+                    Order placed @orderWithStatus.Order.CreatedTime.ToLongDateString()
                 </h2>
                 <p class="ml-auto mb-0">
                     Status: <strong>@orderWithStatus.StatusText</strong>
@@ -53,7 +54,6 @@
     private async void PollForUpdates()
     {
         pollingCancellationToken = new CancellationTokenSource();
-
         while (!pollingCancellationToken.IsCancellationRequested)
         {
             try
