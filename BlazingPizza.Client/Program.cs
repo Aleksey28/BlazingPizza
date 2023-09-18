@@ -13,6 +13,6 @@ builder.Services.AddHttpClient<OrdersClient>(client => client.BaseAddress = new 
     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
 // Add auth services
-builder.Services.AddApiAuthorization();
+builder.Services.AddApiAuthorization<PizzaAuthenticationState>();
 
 await builder.Build().RunAsync();
